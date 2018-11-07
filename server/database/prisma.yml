@@ -1,0 +1,8 @@
+# The HTTP endpoint for your Prisma API
+endpoint: https://us1.prisma.sh/kening/mermanager-db/mermen
+datamodel: datamodel.graphql
+
+# Deploy hook
+hooks:
+  post-deploy:
+    - graphql get-schema --project database

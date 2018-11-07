@@ -1,0 +1,328 @@
+# source: https://us1.prisma.sh/kening/mermanager-db/mermen
+# timestamp: Mon Nov 05 2018 17:18:32 GMT-0500 (Eastern Standard Time)
+
+type AggregateMerman {
+  count: Int!
+}
+
+type BatchPayload {
+  """The number of nodes that have been affected by the Batch operation."""
+  count: Long!
+}
+
+scalar DateTime
+
+"""
+The `Long` scalar type represents non-fractional signed whole numeric values.
+Long can represent values between -(2^63) and 2^63 - 1.
+"""
+scalar Long
+
+type Merman implements Node {
+  id: ID!
+  createdAt: DateTime!
+  name: String!
+  location: String!
+}
+
+"""A connection to a list of items."""
+type MermanConnection {
+  """Information to aid in pagination."""
+  pageInfo: PageInfo!
+
+  """A list of edges."""
+  edges: [MermanEdge]!
+  aggregate: AggregateMerman!
+}
+
+input MermanCreateInput {
+  name: String!
+  location: String!
+}
+
+"""An edge in a connection."""
+type MermanEdge {
+  """The item at the end of the edge."""
+  node: Merman!
+
+  """A cursor for use in pagination."""
+  cursor: String!
+}
+
+enum MermanOrderByInput {
+  id_ASC
+  id_DESC
+  createdAt_ASC
+  createdAt_DESC
+  name_ASC
+  name_DESC
+  location_ASC
+  location_DESC
+  updatedAt_ASC
+  updatedAt_DESC
+}
+
+type MermanPreviousValues {
+  id: ID!
+  createdAt: DateTime!
+  name: String!
+  location: String!
+}
+
+type MermanSubscriptionPayload {
+  mutation: MutationType!
+  node: Merman
+  updatedFields: [String!]
+  previousValues: MermanPreviousValues
+}
+
+input MermanSubscriptionWhereInput {
+  """Logical AND on all given filters."""
+  AND: [MermanSubscriptionWhereInput!]
+
+  """Logical OR on all given filters."""
+  OR: [MermanSubscriptionWhereInput!]
+
+  """Logical NOT on all given filters combined by AND."""
+  NOT: [MermanSubscriptionWhereInput!]
+
+  """
+  The subscription event gets dispatched when it's listed in mutation_in
+  """
+  mutation_in: [MutationType!]
+
+  """
+  The subscription event gets only dispatched when one of the updated fields names is included in this list
+  """
+  updatedFields_contains: String
+
+  """
+  The subscription event gets only dispatched when all of the field names included in this list have been updated
+  """
+  updatedFields_contains_every: [String!]
+
+  """
+  The subscription event gets only dispatched when some of the field names included in this list have been updated
+  """
+  updatedFields_contains_some: [String!]
+  node: MermanWhereInput
+}
+
+input MermanUpdateInput {
+  name: String
+  location: String
+}
+
+input MermanUpdateManyMutationInput {
+  name: String
+  location: String
+}
+
+input MermanWhereInput {
+  """Logical AND on all given filters."""
+  AND: [MermanWhereInput!]
+
+  """Logical OR on all given filters."""
+  OR: [MermanWhereInput!]
+
+  """Logical NOT on all given filters combined by AND."""
+  NOT: [MermanWhereInput!]
+  id: ID
+
+  """All values that are not equal to given value."""
+  id_not: ID
+
+  """All values that are contained in given list."""
+  id_in: [ID!]
+
+  """All values that are not contained in given list."""
+  id_not_in: [ID!]
+
+  """All values less than the given value."""
+  id_lt: ID
+
+  """All values less than or equal the given value."""
+  id_lte: ID
+
+  """All values greater than the given value."""
+  id_gt: ID
+
+  """All values greater than or equal the given value."""
+  id_gte: ID
+
+  """All values containing the given string."""
+  id_contains: ID
+
+  """All values not containing the given string."""
+  id_not_contains: ID
+
+  """All values starting with the given string."""
+  id_starts_with: ID
+
+  """All values not starting with the given string."""
+  id_not_starts_with: ID
+
+  """All values ending with the given string."""
+  id_ends_with: ID
+
+  """All values not ending with the given string."""
+  id_not_ends_with: ID
+  createdAt: DateTime
+
+  """All values that are not equal to given value."""
+  createdAt_not: DateTime
+
+  """All values that are contained in given list."""
+  createdAt_in: [DateTime!]
+
+  """All values that are not contained in given list."""
+  createdAt_not_in: [DateTime!]
+
+  """All values less than the given value."""
+  createdAt_lt: DateTime
+
+  """All values less than or equal the given value."""
+  createdAt_lte: DateTime
+
+  """All values greater than the given value."""
+  createdAt_gt: DateTime
+
+  """All values greater than or equal the given value."""
+  createdAt_gte: DateTime
+  name: String
+
+  """All values that are not equal to given value."""
+  name_not: String
+
+  """All values that are contained in given list."""
+  name_in: [String!]
+
+  """All values that are not contained in given list."""
+  name_not_in: [String!]
+
+  """All values less than the given value."""
+  name_lt: String
+
+  """All values less than or equal the given value."""
+  name_lte: String
+
+  """All values greater than the given value."""
+  name_gt: String
+
+  """All values greater than or equal the given value."""
+  name_gte: String
+
+  """All values containing the given string."""
+  name_contains: String
+
+  """All values not containing the given string."""
+  name_not_contains: String
+
+  """All values starting with the given string."""
+  name_starts_with: String
+
+  """All values not starting with the given string."""
+  name_not_starts_with: String
+
+  """All values ending with the given string."""
+  name_ends_with: String
+
+  """All values not ending with the given string."""
+  name_not_ends_with: String
+  location: String
+
+  """All values that are not equal to given value."""
+  location_not: String
+
+  """All values that are contained in given list."""
+  location_in: [String!]
+
+  """All values that are not contained in given list."""
+  location_not_in: [String!]
+
+  """All values less than the given value."""
+  location_lt: String
+
+  """All values less than or equal the given value."""
+  location_lte: String
+
+  """All values greater than the given value."""
+  location_gt: String
+
+  """All values greater than or equal the given value."""
+  location_gte: String
+
+  """All values containing the given string."""
+  location_contains: String
+
+  """All values not containing the given string."""
+  location_not_contains: String
+
+  """All values starting with the given string."""
+  location_starts_with: String
+
+  """All values not starting with the given string."""
+  location_not_starts_with: String
+
+  """All values ending with the given string."""
+  location_ends_with: String
+
+  """All values not ending with the given string."""
+  location_not_ends_with: String
+}
+
+input MermanWhereUniqueInput {
+  id: ID
+}
+
+type Mutation {
+  createMerman(data: MermanCreateInput!): Merman!
+  updateMerman(data: MermanUpdateInput!, where: MermanWhereUniqueInput!): Merman
+  deleteMerman(where: MermanWhereUniqueInput!): Merman
+  upsertMerman(where: MermanWhereUniqueInput!, create: MermanCreateInput!, update: MermanUpdateInput!): Merman!
+  updateManyMermen(data: MermanUpdateManyMutationInput!, where: MermanWhereInput): BatchPayload!
+  deleteManyMermen(where: MermanWhereInput): BatchPayload!
+}
+
+enum MutationType {
+  CREATED
+  UPDATED
+  DELETED
+}
+
+"""An object with an ID"""
+interface Node {
+  """The id of the object."""
+  id: ID!
+}
+
+"""Information about pagination in a connection."""
+type PageInfo {
+  """When paginating forwards, are there more items?"""
+  hasNextPage: Boolean!
+
+  """When paginating backwards, are there more items?"""
+  hasPreviousPage: Boolean!
+
+  """When paginating backwards, the cursor to continue."""
+  startCursor: String
+
+  """When paginating forwards, the cursor to continue."""
+  endCursor: String
+}
+
+type Query {
+  mermen(where: MermanWhereInput, orderBy: MermanOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Merman]!
+  merman(where: MermanWhereUniqueInput!): Merman
+  mermenConnection(where: MermanWhereInput, orderBy: MermanOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): MermanConnection!
+
+  """Fetches an object given its ID"""
+  node(
+    """The ID of an object"""
+    id: ID!
+  ): Node
+}
+
+type Subscription {
+  merman(where: MermanSubscriptionWhereInput): MermanSubscriptionPayload
+}

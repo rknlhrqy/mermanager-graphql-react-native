@@ -1,0 +1,32 @@
+Arguments: 
+  /Users/h328646/.nvm/versions/node/v11.0.0/bin/node /usr/local/Cellar/yarn/1.10.1/libexec/bin/yarn.js add graphql-yoga
+
+PATH: 
+  /usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Users/h328646/.nvm/versions/node/v11.0.0/bin
+
+Yarn version: 
+  1.10.1
+
+Node version: 
+  11.0.0
+
+Platform: 
+  darwin x64
+
+Trace: 
+  Error: getaddrinfo ENOTFOUND registry.yarnpkg.com registry.yarnpkg.com:443
+      at GetAddrInfoReqWrap.onlookup [as oncomplete] (dns.js:58:26)
+
+npm manifest: 
+  {
+    "name": "server",
+    "version": "1.0.0",
+    "main": "index.js",
+    "license": "MIT"
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile

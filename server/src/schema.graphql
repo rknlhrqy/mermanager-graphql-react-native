@@ -1,0 +1,12 @@
+# import Merman from "./generated/prisma.graphql"
+
+type Query {
+  allMermen: [Merman!]!
+}
+
+
+type Mutation {
+  addMerman(name: String!, location: String!): Merman!
+  changeMerman(id: ID!, location: String!): Merman!
+  removeMerman(id: ID!): Merman!
+}

@@ -1,0 +1,6 @@
+type Merman {
+  id: ID! @unique
+  createdAt: DateTime!
+  name: String!
+  location: String!
+}
