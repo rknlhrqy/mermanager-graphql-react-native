@@ -26,6 +26,7 @@ Here are the components to implement:<br>
 <br>
 # how to run it?
 You need to install Node.js, Yarn, and expo-cli.<br>
+You need to go insie the project folder and run "npm install" to install all needed npm modules.<br>
 You need to go to the folder "server" and run "node src/index.js" to start the back-end at first. <br>
 Then you just run "expo start".<br>
 
