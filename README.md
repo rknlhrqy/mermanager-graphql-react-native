@@ -23,4 +23,9 @@ Here are the components to implement:<br>
 6, Add the input form for users to add new merman via doing mutation action over Apollo Client in the front-end. (on the going)<br>
 7, Add the functionality to remove a merman. (to be done)<br>
 8, Add the functionality to move a merman to a different place. (to be done)<br>
+<br>
+# how to run it?
+You need to install Node.js, Yarn, and expo-cli.<br>
+You need to go to the folder "server" and run "node src/index.js" to start the back-end at first. <br>
+Then you just run "expo start".<br>
 
