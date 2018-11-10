@@ -9,14 +9,17 @@ import {
   View,
 } from 'react-native';
 import { WebBrowser } from 'expo';
-
 import { Query } from 'react-apollo';
+import { inject, observer } from 'mobx-react';
 
 import { GET_MERMEN } from '../graphql/graphql';
 import { MonoText } from '../components/StyledText';
 import MermanList from '../components/MermanList';
 import MyHeader from '../components/Header';
+import AddMerman from '../components/AddMerman';
 
+@inject('mermenStore')
+@observer
 export default class HomeScreen extends React.Component {
   static navigationOptions = {
     header: null,
@@ -25,8 +28,11 @@ export default class HomeScreen extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-      <MyHeader />
-        <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
+        <MyHeader />
+        <ScrollView
+          style={styles.container}
+          contentContainerStyle={styles.contentContainer}>
+          <AddMerman />
           <View style={styles.welcomeContainer}>
             <Query query={GET_MERMEN}>
               {({loading, error, data}) => {
@@ -34,39 +40,13 @@ export default class HomeScreen extends React.Component {
                   return <Text>Error!</Text>;
                 }
                 if (loading || !data) return <Text>Fetching...</Text>;
-                return <MermanList mermen={data.allMermen}/>;
+                this.props.mermenStore.FillMermen(data.allMermen);
+                // return <MermanList mermen={data.allMermen}/>;
+                return <MermanList/>;
               }}
-              </Query>
-          </View>
-
-          <View style={styles.getStartedContainer}>
-            {this._maybeRenderDevelopmentModeWarning()}
-
-            <Text style={styles.getStartedText}>Get started by opening</Text>
-
-            <View style={[styles.codeHighlightContainer, styles.homeScreenFilename]}>
-              <MonoText style={styles.codeHighlightText}>screens/HomeScreen.js</MonoText>
-            </View>
-
-            <Text style={styles.getStartedText}>
-              Change this text and your app will automatically reload.
-            </Text>
-          </View>
-
-          <View style={styles.helpContainer}>
-            <TouchableOpacity onPress={this._handleHelpPress} style={styles.helpLink}>
-              <Text style={styles.helpLinkText}>Help, it didn’t automatically reload!</Text>
-            </TouchableOpacity>
+            </Query>
           </View>
         </ScrollView>
-
-        <View style={styles.tabBarInfoContainer}>
-          <Text style={styles.tabBarInfoText}>This is a tab bar. You can edit it in:</Text>
-
-          <View style={[styles.codeHighlightContainer, styles.navigationFilename]}>
-            <MonoText style={styles.codeHighlightText}>navigation/MainTabNavigator.js</MonoText>
-          </View>
-        </View>
       </View>
     );
   }

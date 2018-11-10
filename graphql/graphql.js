@@ -12,7 +12,7 @@ export const GET_MERMEN = gql`
 `;
 
 export const ADD_MERMAN = gql`
-  mutation AddMerman($name: String!, $location: String!) {
+  mutation addMerman($name: String!, $location: String!) {
     addMerman(name: $name, location: $location) {
       id
       createdAt

@@ -1,8 +1,13 @@
 import React, { Component } from 'react';
 import { Text, SectionList, StyleSheet } from 'react-native';
+import { inject, observer } from 'mobx-react';
 import { PLACE } from '../config/config';
+import SectionItem from './SectionItem';
 
+@inject('mermenStore')
+@observer
 export default class MermanList extends Component {
+  /*
   sections = [];
   convert = (mermen) => {
     PLACE.forEach((place, i) =>{
@@ -17,13 +22,20 @@ export default class MermanList extends Component {
       this.sections.push(section);
     });
   };
+  */
   extractKey = ({id}) => id;
-
+/*
   renderItem = ({item}) => {
     return(
       <Text style={styles.row}>
         {item.name}
       </Text>
+    );
+  };
+*/
+  renderItem = ({item}) => {
+    return(
+      <SectionItem id={item.key}/>
     );
   };
 
@@ -36,11 +48,13 @@ export default class MermanList extends Component {
   };
 
   render() {
-    this.convert(this.props.mermen);
+    debugger;
+    // this.convert(this.props.mermenStore.sortedMermenResult);
+    // this.convert(this.props.mermenStore.mermenResult);
     return(
       <SectionList
         style={styles.container}
-        sections={this.sections}
+        sections={this.props.mermenStore.mermenSectionList}
         renderItem={this.renderItem}
         renderSectionHeader={this.renderSectionHeader}
         keyExtractor={this.extractKey}
